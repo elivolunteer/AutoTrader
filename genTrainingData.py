@@ -3,15 +3,6 @@ import numpy as np
 import pandas as pd
 import pickle
 
-
-#load tickers in classes together
-#with open("IT_tickers.pickle", "rb") as f:
-#    IT_tickers = pickle.load(f)
-#with open("HC_tickers.pickle", "rb") as f:
-#    HC_tickers = pickle.load(f)
-#with open("energy_tickers.pickle", "rb") as f:
-#    energy_tickers = pickle.load(f)
-
 def create_labels(df, tickers):
     hm_days = 30 #amount of days in the "waveform"
     datelist = pd.date_range(start="1/1/2015", end="10/22/2020", freq="D") #needs to have buffer of at least hm_days
@@ -54,7 +45,7 @@ def create_labels(df, tickers):
 
 def genIT_bsh():
     main_df = pd.DataFrame()
-    with open("IT_tickers.pickle", "rb") as f:
+    with open("tickers/IT_tickers.pickle", "rb") as f:
         IT_tickers = pickle.load(f)
 
     for ticker in IT_tickers:
@@ -77,14 +68,14 @@ def genIT_bsh():
     IT_waveforms, IT_labels = create_labels(main_df, IT_tickers)
 
     #store for analysis
-    with open("IT_waveforms.pickle", "wb") as f:
+    with open("serialized_data/IT_waveforms.pickle", "wb") as f:
         pickle.dump(IT_waveforms, f)
-    with open("IT_labels.pickle", "wb") as f:
+    with open("serialized_data/IT_labels.pickle", "wb") as f:
         pickle.dump(IT_labels, f)
 
 def genHC_bsh():
     main_df = pd.DataFrame()
-    with open("HC_tickers.pickle", "rb") as f:
+    with open("tickers/HC_tickers.pickle", "rb") as f:
         HC_tickers = pickle.load(f)
 
     for ticker in HC_tickers:
@@ -107,14 +98,14 @@ def genHC_bsh():
     HC_waveforms, HC_labels = create_labels(main_df, HC_tickers)
 
     #store for analysis
-    with open("HC_waveforms.pickle", "wb") as f:
+    with open("serialized_data/HC_waveforms.pickle", "wb") as f:
         pickle.dump(HC_waveforms, f)
-    with open("HC_labels.pickle", "wb") as f:
+    with open("serialized_data/HC_labels.pickle", "wb") as f:
         pickle.dump(HC_labels, f)
 
 def genEnergy_bsh():
     main_df = pd.DataFrame()
-    with open("Energy_tickers.pickle", "rb") as f:
+    with open("tickers/Energy_tickers.pickle", "rb") as f:
         Energy_tickers = pickle.load(f)
 
     for ticker in Energy_tickers:
@@ -137,7 +128,7 @@ def genEnergy_bsh():
     Energy_waveforms, Energy_labels = create_labels(main_df, Energy_tickers)
 
     #store for analysis
-    with open("Energy_waveforms.pickle", "wb") as f:
+    with open("serialized_data/Energy_waveforms.pickle", "wb") as f:
         pickle.dump(Energy_waveforms, f)
-    with open("Energy_labels.pickle", "wb") as f:
+    with open("serialized_data/Energy_labels.pickle", "wb") as f:
         pickle.dump(Energy_labels, f)

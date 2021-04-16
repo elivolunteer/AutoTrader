@@ -24,10 +24,10 @@ def main(args):
         print("Unable to generate training for %s" % args[1])
 
     # Load in new data
-    with open(f"{args[1]}_waveforms.pickle", "rb") as f:
+    with open(f"serialized_data/{args[1]}_waveforms.pickle", "rb") as f:
         waveforms = pickle.load(f)
         waveforms = np.delete(waveforms,[0],0)
-    with open(f"{args[1]}_labels.pickle", "rb") as f:
+    with open(f"serialized_data/{args[1]}_labels.pickle", "rb") as f:
         labels = pickle.load(f)
 
     # Retrain based on given model

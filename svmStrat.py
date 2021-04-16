@@ -49,5 +49,5 @@ def train_svm(waveforms, labels, industry):
 
 
     #save
-    with open(f"{industry}_svm_clf.pickle", "wb") as f:
+    with open(f"strategies/{industry}_svm_clf.pickle", "wb") as f:
         pickle.dump(clf, f)

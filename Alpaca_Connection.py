@@ -26,7 +26,7 @@ def main():
         if clock.is_open == True:
             print(f"The market is open at {clock.timestamp}")
             # At noon, execute stragety
-            tickers = pickle.load(f"{argv[1]}_tickers.pickle")
+            tickers = pickle.load(f"tickers/{argv[1]}_tickers.pickle")
             for ticker in tickers
                 # TODO: check money,
                 #       execute,
