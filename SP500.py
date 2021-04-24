@@ -57,6 +57,7 @@ def save_sp500_tickers():
 
 #Creates or updates DataFrames based on yahoo daily data, then pickles
 def get_data_from_yahoo(reload_sp500=False):
+    print("Getting data from yahoo")
     if reload_sp500:
         tickers = save_sp500_tickers()
     else:
