@@ -4,12 +4,12 @@ import datetime, time, sys
 import pickle
 import UpdateAndRetrain
 import SP500
-from trade import Trade
 
-def main():
+def main(argv):
     #Check command line arguments
     if len(argv) < 3 or len(argv) > 3:
         print("Usage: Alpaca_Connection.py <Industry> (IT, HC, Energy) <Strategy> (svm) <Mode>")
+        return -1
 
     # Connect to Alpaca
     BASE_URL = "https://paper-api.alpaca.markets"
@@ -68,4 +68,4 @@ def curr_waveform(ticker):
     return waveform
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[0:])
